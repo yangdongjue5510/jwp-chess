@@ -12,12 +12,11 @@ import chess.service.dto.response.EndGameResponse;
 import chess.service.dto.response.GameResultDto;
 import chess.service.dto.response.MoveResponse;
 import java.util.Map;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional(rollbackFor = {DataAccessException.class, IllegalArgumentException.class})
+@Transactional(rollbackFor = {Exception.class})
 public class ChessService {
     private final ChessGameRepository chessGameRepository;
     private final BoardRepository boardRepository;
