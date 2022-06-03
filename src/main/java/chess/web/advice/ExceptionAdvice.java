@@ -17,7 +17,7 @@ public class ExceptionAdvice {
     }
 
     @ExceptionHandler(DataAccessException.class)
-    public ResponseEntity<ExceptionResponse> handleDatabaseError() {
-        return ResponseEntity.badRequest().body(new ExceptionResponse("데이터 관련 문제가 생겼습니다!"));
+    public ResponseEntity<ExceptionResponse> handleDatabaseError(Exception exception) {
+        return ResponseEntity.badRequest().body(new ExceptionResponse(exception.getMessage() + "데이터 관련 문제가 생겼습니다!"));
     }
 }
